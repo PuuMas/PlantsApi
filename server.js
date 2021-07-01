@@ -23,8 +23,8 @@ app.use(express.static('public'));
 app.route('/plants')
 	.get(todoListController.fetchAll);
 
-app.route('/plants/:name')
-	.get(todoListController.fetchName);
+app.route('/search')
+	.post(todoListController.fetchName);
 
 app.listen(port, hostname, () => {
 	console.log(`Server running AT http://${hostname}:${port}/`);

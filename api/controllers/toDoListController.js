@@ -3,7 +3,11 @@
 var mysql = require('mysql');
 
 var connection = mysql.createConnection( {
-	//Here should be mysql connection data
+	host : 'localhost',
+	user : 'root',
+	password : 'Ruutti',
+	port : 3307,
+	database : 'plants',
 });
 
 module.exports =
@@ -22,16 +26,23 @@ module.exports =
 		});
 	},
 	fetchName: function(req, res) {
-		var sql = "SELECT * FROM herbs where herb_name LIKE '%" + req.params.name +"%'";
+		var post_data = req.body;
+		var name_search = post_data.search;
+
+		var sql = "SELECT * FROM herbs where herb_name LIKE '%" + name_search +"%'";
+		
 		connection.query(sql, function(error, results, fields) {
 			if (error) {
 				console.log("Virhe haettaessa dataa kuvat-taulusta, syy: " + error);
 				res.send({"status": 500, "error": error, "response": null});
-			} else {
-				console.log("Data = " + JSON.stringify(results));
-				res.statusCode = 200;
-				res.send(results);
 			}
+				if(results && results.length){
+					console.log("Data = " + JSON.stringify(results));
+					res.statusCode = 200;
+					res.send(results);
+				}else{
+					res.send("No plants here");
+				}
 		});
 	}
 }
