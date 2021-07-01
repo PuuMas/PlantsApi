@@ -26,7 +26,7 @@ module.exports =
 		});
 	},
 	fetchName: function(req, res) {
-		var sql = "SELECT * FROM herbs where herb_name = '" + req.params.name +"'";
+		var sql = "SELECT * FROM herbs where herb_name LIKE '%" + req.params.name +"%'";
 		connection.query(sql, function(error, results, fields) {
 			if (error) {
 				console.log("Virhe haettaessa dataa kuvat-taulusta, syy: " + error);
