@@ -7,7 +7,7 @@ var todoListController = require('./api/controllers/toDoListController');
 const http = require('http');
 const url = require('url');
 
-const hostname = '192.168.1.3';
+const hostname = '192.168.1.12';
 const port = process.env.PORT || 80;
 
 var allowCrossDomain = function(req, res, next) {
@@ -20,11 +20,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+//Serves all the request which includes /images in the url from Images folder
+app.use('/images', express.static(__dirname + '/images'));
+
 app.route('/plants')
 	.get(todoListController.fetchAll);
 
-app.route('/search')
-	.post(todoListController.fetchName);
+app.route('/plants/:name')
+	.get(todoListController.fetchName);
 
 app.listen(port, hostname, () => {
 	console.log(`Server running AT http://${hostname}:${port}/`);
