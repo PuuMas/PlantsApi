@@ -4,10 +4,10 @@
 
 var connection = mysql.createConnection( {
 	host : 'localhost',
-	user : 'root',
-	password : 'Ruutti',
+	user : '',
+	password : '',
 	port : 3306,
-	database : 'plants',
+	database : '',
 	insecureAuth : true
 });
 
