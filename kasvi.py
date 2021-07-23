@@ -1,4 +1,5 @@
 import serial,time
+import json
 
 if __name__ == '__main__':
 
@@ -13,10 +14,14 @@ if __name__ == '__main__':
                         answer = arduino.readline()
                         ser = answer.decode('ascii').split('x')
                         ser[2] = ser[2].rstrip()
-                        print("Your sun level is " + ser[0])
-                        print("Your Water level is " + ser[1])
-                        print("Your tempature " + ser[2])
-                        print("Your humidity " + ser[3])
+                        data = {
+                            "sun": ser[0],
+                            "water": ser[1],
+                            "tempature": ser[2],
+                            "humidity": ser[3]
+                            }
+                        dataJson = json.dumps(data)
+                        print(dataJson)
                         arduino.flushInput()
                         arduino.close()
             except KeyboardInterrupt:
