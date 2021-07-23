@@ -1,6 +1,6 @@
 "use strict";
 
-var mysql = require("mysql2");
+var mysql = require("mysql");
 
 //Spawn for running scripts
 const {spawn} = require('child_process');
