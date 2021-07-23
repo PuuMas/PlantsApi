@@ -7,7 +7,7 @@ var todoListController = require('./api/controllers/toDoListController');
 const http = require('http');
 const url = require('url');
 
-const hostname = '192.168.1.12';
+const hostname = 'You IP goes here';
 const port = process.env.PORT || 80;
 
 var allowCrossDomain = function(req, res, next) {
