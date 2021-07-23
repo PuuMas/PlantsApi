@@ -1,13 +1,14 @@
 var express = require('express');
 var app = express();
 
+
 var bodyParser = require('body-parser');
 var todoListController = require('./api/controllers/toDoListController');
 
 const http = require('http');
 const url = require('url');
 
-const hostname = 'You IP goes here';
+const hostname = '192.168.100.148';
 const port = process.env.PORT || 80;
 
 var allowCrossDomain = function(req, res, next) {
@@ -28,6 +29,9 @@ app.route('/plants')
 
 app.route('/plants/:name')
 	.get(todoListController.fetchName);
+
+app.route('/runscript')
+	.get(todoListController.runScript);
 
 app.listen(port, hostname, () => {
 	console.log(`Server running AT http://${hostname}:${port}/`);
