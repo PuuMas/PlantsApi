@@ -7,8 +7,8 @@ const {spawn} = require('child_process');
 
 var connection = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "root",
+  user: "",
+  password: "",
   port: 3306,
   database: "plants",
   insecureAuth: true,
