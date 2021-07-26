@@ -14,12 +14,12 @@ if __name__ == '__main__':
                         answer = arduino.readline()
                         ser = answer.decode('ascii').split('x')
                         ser[2] = ser[2].rstrip()
-                        data = {
+                        data = [{
                             "sun": ser[0],
                             "water": ser[1],
                             "tempature": ser[2],
                             "humidity": ser[3]
-                            }
+                            }]
                         dataJson = json.dumps(data)
                         print(dataJson)
                         arduino.flushInput()
