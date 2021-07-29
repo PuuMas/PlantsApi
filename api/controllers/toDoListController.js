@@ -4,11 +4,11 @@ var mysql = require("mysql");
 
 //Spawn for running scripts
 const {spawn} = require('child_process');
-
-var connection = mysql.createConnection({
+//Create pool instead connection to handle connection timeouts from SQL server
+var connection = mysql.createPool({
   host: "localhost",
-  user: "",
-  password: "",
+  user: "root",
+  password: "root",
   port: 3306,
   database: "plants",
   insecureAuth: true,
@@ -27,7 +27,7 @@ module.exports = {
         res.statusCode = 200;
         res.send(results);
       }
-    });
+    }); 
   },
   //Fetch the name of the herb that user writes
   fetchName: function (req, res) {
