@@ -6,11 +6,11 @@ var mysql = require("mysql");
 const {spawn} = require('child_process');
 //Create pool instead connection to handle connection timeouts from SQL server
 var connection = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "root",
+  host: "",
+  user: "",
+  password: "",
   port: 3306,
-  database: "plants",
+  database: "",
   insecureAuth: true,
 });
 
